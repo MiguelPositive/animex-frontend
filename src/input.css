@@ -1,0 +1,132 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body {
+  font-family: "Poppins", sans-serif;
+  font-weight: 300;
+  font-display: swap;
+
+  background-color: black;
+}
+
+.register-empy {
+  animation: register-empy 300ms ease forwards;
+
+  /* animation-fill-mode: forwards;
+  animation-name: register-empy;
+  animation-duration: 300ms; */
+}
+
+.register-full {
+  animation: register-full 500ms ease forwards;
+
+  /* animation-fill-mode: forwards;
+  animation-name: register-full;
+  animation-duration: 500ms; */
+}
+
+.login-empy {
+  animation: login-empy 300ms ease forwards;
+  /* animation-fill-mode: forwards;
+  animation-fill-mode: forwards;
+  animation-name: login-empy;
+  animation-duration: 300ms;  */
+}
+
+.login-full {
+  animation: login-full 500ms ease forwards;
+  /* animation-name: login-full;
+  animation-fill-mode: forwards;
+  animation-duration: 500ms; */
+}
+
+.transition-view {
+  animation: transition-view 0.7s ease forwards;
+}
+
+.show-register-anime {
+  animation-name: show-register-anime;
+  animation-fill-mode: forwards;
+  animation-duration: 500ms;
+}
+
+.hidden-register-anime {
+  animation-name: hidden-register-anime;
+  animation-fill-mode: forwards;
+  animation-duration: 500ms;
+}
+
+@keyframes register-empy {
+  from {
+    height: 22rem;
+  }
+
+  to {
+    height: 25rem;
+  }
+}
+
+@keyframes register-full {
+  from {
+    height: 25rem;
+  }
+
+  to {
+    height: 22rem;
+  }
+}
+
+@keyframes login-empy {
+  from {
+    height: 18rem;
+  }
+  to {
+    height: 21rem;
+  }
+}
+
+@keyframes login-full {
+  from {
+    height: 21rem;
+  }
+  to {
+    height: 18rem;
+  }
+}
+
+@keyframes transition-view {
+  from {
+    opacity: 0;
+    filter: blur(10px);
+  }
+
+  to {
+    opacity: 1;
+    filter: blur(0px);
+  }
+}
+
+@keyframes show-register-anime {
+  from {
+    opacity: 0;
+    filter: blur(0px);
+  }
+
+  to {
+    opacity: 1;
+    filter: blur(5px);
+  }
+}
+
+@keyframes hidden-register-anime {
+  from {
+    opacity: 1;
+    filter: blur(5px);
+  }
+
+  to {
+    opacity: 1;
+    filter: blur(0px);
+  }
+}
