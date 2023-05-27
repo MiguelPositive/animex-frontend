@@ -18,7 +18,10 @@ const Animes = () => {
           key={anime._id}
         >
           <div id="img-anime" className="w-full h-[70%]">
-            <img src={anime.poster} alt="Poster" />
+            <img
+              src={`https://animex-backend.onrender.com/imgsAnime/${anime.poster}`}
+              alt="Poster"
+            />
           </div>
           <div
             id="text-anime"
