@@ -20,7 +20,9 @@ const Animes = () => {
           <div id="img-anime" className="w-full h-[70%]">
             <img
               src={`https://animex-backend.onrender.com/imgsAnime/${anime.poster}`}
-              alt="Poster"
+              alt={`Poster ${anime.name}`}
+              width="500px"
+              height="500px"
             />
           </div>
           <div
