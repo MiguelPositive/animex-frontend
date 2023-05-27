@@ -83,7 +83,10 @@ const ContextApp = ({ children }) => {
 
   const createUser = async (user, password) => {
     try {
-      await axios.post("http://localhost:4000/create-user", { user, password });
+      await axios.post("https://animex-backend.onrender.com/create-user", {
+        user,
+        password,
+      });
       userRegistered();
     } catch (error) {
       console.log(
@@ -105,10 +108,13 @@ const ContextApp = ({ children }) => {
     try {
       const {
         data: { validation },
-      } = await axios.post("http://localhost:4000/correct-credentials", {
-        user,
-        password,
-      });
+      } = await axios.post(
+        "https://animex-backend.onrender.com/correct-credentials",
+        {
+          user,
+          password,
+        }
+      );
 
       return await validation;
     } catch (error) {
@@ -122,7 +128,7 @@ const ContextApp = ({ children }) => {
     try {
       const {
         data: { id },
-      } = await axios.post("http://localhost:4000/get-id-user", {
+      } = await axios.post("https://animex-backend.onrender.com/get-id-user", {
         user,
       });
 
@@ -138,7 +144,7 @@ const ContextApp = ({ children }) => {
     try {
       const {
         data: { animesData },
-      } = await axios.get("http://localhost:4000/get-animes");
+      } = await axios.get("https://animex-backend.onrender.com/get-animes");
 
       setAnimes(animesData);
       setAnimesCopy(animesData);
@@ -151,7 +157,10 @@ const ContextApp = ({ children }) => {
 
   const addAnime = async (formData) => {
     try {
-      await axios.post("http://localhost:4000/add-anime", formData);
+      await axios.post(
+        "https://animex-backend.onrender.com/add-anime",
+        formData
+      );
       getAnimes();
     } catch (error) {
       console.log(
