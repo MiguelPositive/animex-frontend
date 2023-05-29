@@ -146,8 +146,8 @@ const ContextApp = ({ children }) => {
         data: { animesData },
       } = await axios.get("https://animex-backend.onrender.com/get-animes");
 
-      setAnimes(animesData);
-      setAnimesCopy(animesData);
+      setAnimes(await animesData);
+      setAnimesCopy(await animesData);
     } catch (error) {
       console.log(
         `ocurrio un error en el frontend al intentar consultar los animes. ${error}`
