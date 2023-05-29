@@ -29,8 +29,8 @@ const Animes = () => {
             id="text-anime"
             className="flex justify-center items-center text-black"
           >
-            <p className="text-center text-black">{anime.name}</p>
-            <p>{anime.description}</p>
+            <p className="w-full text-center text-black">{anime.name}</p>
+            <p className="w-full">{anime.description}</p>
           </div>
         </div>
       ))}
