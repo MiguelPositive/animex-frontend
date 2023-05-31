@@ -11,7 +11,7 @@ const Animes = () => {
   const { animesCopy } = useContext(store);
 
   return (
-    <div className="flex justify-center gap-5 flex-wrap">
+    <div className="flex justify-center gap-5 flex-wrap transition-all duration-300 hover:scale-110">
       {animesCopy.map((anime) => (
         <div
           className={`w-[15rem] h-[20rem] bg-white rounded-md cursor-pointer overflow-hidden`}
@@ -32,7 +32,9 @@ const Animes = () => {
             <p className="w-full text-center text-black text-2xl font-bold mt-5 mb-5">
               {anime.name}
             </p>
-            <p className="w-full text-justify pl-5 pr-5">{anime.description}</p>
+            <p className="w-full text-justify pl-5 pr-5 pb-5">
+              {anime.description}
+            </p>
           </div>
         </div>
       ))}
