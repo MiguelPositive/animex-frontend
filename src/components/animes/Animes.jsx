@@ -32,7 +32,7 @@ const Animes = () => {
             <p className="w-full text-center text-black text-2xl font-bold mt-5 mb-5">
               {anime.name}
             </p>
-            <p className="w-full">{anime.description}</p>
+            <p className="w-full text-justify pl-5 pr-5">{anime.description}</p>
           </div>
         </div>
       ))}
