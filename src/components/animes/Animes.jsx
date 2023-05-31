@@ -27,7 +27,7 @@ const Animes = () => {
           </div>
           <div
             id="text-anime"
-            className="flex flex-wrap justify-center items-center text-black h-[5rem]"
+            className="w-full flex flex-wrap justify-center items-center text-black h-[5rem]"
           >
             <p className="w-full text-center text-black text-2xl font-bold mt-5 mb-5">
               {anime.name}
