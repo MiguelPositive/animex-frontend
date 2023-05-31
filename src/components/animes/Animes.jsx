@@ -11,10 +11,10 @@ const Animes = () => {
   const { animesCopy } = useContext(store);
 
   return (
-    <div className="flex justify-center gap-5 flex-wrap transition-all duration-300 hover:scale-110">
+    <div className="flex justify-center gap-5 flex-wrap ">
       {animesCopy.map((anime) => (
         <div
-          className={`w-[15rem] h-[20rem] bg-white rounded-md cursor-pointer overflow-hidden`}
+          className={`w-[15rem] h-[20rem] bg-white rounded-md cursor-pointer overflow-hidden transition-all duration-200 hover:scale-110`}
           key={anime._id}
         >
           <div id="img-anime" className="w-[15rem] h-[10rem]">
