@@ -560,16 +560,16 @@ video {
   top: 0.75rem;
 }
 
-.top-10 {
-  top: 2.5rem;
-}
-
 .z-10 {
   z-index: 10;
 }
 
 .z-20 {
   z-index: 20;
+}
+
+.mb-0 {
+  margin-bottom: 0px;
 }
 
 .mb-1 {
@@ -608,12 +608,24 @@ video {
   margin-left: 0.5rem;
 }
 
+.mt-0 {
+  margin-top: 0px;
+}
+
 .mt-3 {
   margin-top: 0.75rem;
 }
 
 .mt-5 {
   margin-top: 1.25rem;
+}
+
+.-mt-5 {
+  margin-top: -1.25rem;
+}
+
+.-mt-4 {
+  margin-top: -1rem;
 }
 
 .block {
@@ -636,8 +648,8 @@ video {
   height: 20rem;
 }
 
-.h-\[70\%\] {
-  height: 70%;
+.h-\[5rem\] {
+  height: 5rem;
 }
 
 .h-full {
@@ -648,16 +660,28 @@ video {
   height: 100vh;
 }
 
+.h-\[10rem\] {
+  height: 10rem;
+}
+
+.h-auto {
+  height: auto;
+}
+
+.h-\[15rem\] {
+  height: 15rem;
+}
+
+.h-\[17rem\] {
+  height: 17rem;
+}
+
 .min-h-\[18rem\] {
   min-height: 18rem;
 }
 
 .min-h-\[22rem\] {
   min-height: 22rem;
-}
-
-.min-h-\[100vh\] {
-  min-height: 100vh;
 }
 
 .min-h-screen {
@@ -688,12 +712,12 @@ video {
   width: 100vw;
 }
 
-.min-w-\[16rem\] {
-  min-width: 16rem;
+.w-\[14rem\] {
+  width: 14rem;
 }
 
-.min-w-\[100vw\] {
-  min-width: 100vw;
+.min-w-\[16rem\] {
+  min-width: 16rem;
 }
 
 .min-w-full {
@@ -832,10 +856,6 @@ video {
   --tw-bg-opacity: 0.95;
 }
 
-.bg-\[url\(\$\{anime\.poster\}\)\] {
-  background-image: url(${anime.poster});
-}
-
 .bg-bg-dashboard {
   background-image: url(../src/imgs/bg-dashboard.jpg);
 }
@@ -958,6 +978,11 @@ video {
 
 .font-sed {
   font-family: 'Sedgwick Ave Display', cursive;;
+}
+
+.text-2xl {
+  font-size: 1.5rem;
+  line-height: 2rem;
 }
 
 .text-lg {
@@ -1199,9 +1224,9 @@ body {
   position: absolute;
 }
 
-.after\:right-0::after {
+.after\:right-1::after {
   content: var(--tw-content);
-  right: 0px;
+  right: 0.25rem;
 }
 
 .after\:right-52::after {
@@ -1217,11 +1242,6 @@ body {
 .after\:top-5::after {
   content: var(--tw-content);
   top: 1.25rem;
-}
-
-.after\:right-1::after {
-  content: var(--tw-content);
-  right: 0.25rem;
 }
 
 .after\:w-full::after {
