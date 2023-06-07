@@ -14,6 +14,8 @@ const RegisterAnime = () => {
     getIdUser,
     idUser,
     addAnime,
+    updateAnime,
+    idTemp,
   } = useContext(store);
 
   const [name, setName] = useState("");
@@ -22,7 +24,7 @@ const RegisterAnime = () => {
 
   const [animation, setAnimation] = useState("");
 
-  const sendClose = () => {
+  const closeWindow = () => {
     setShowRegisterAnime(false);
   };
 
@@ -39,7 +41,7 @@ const RegisterAnime = () => {
     setPoster(e.target.files[0]);
   };
 
-  const send = () => {
+  const applyFormData = () => {
     // utilizo formData para poder enviar el archivo poster
 
     const formData = new FormData();
@@ -50,8 +52,17 @@ const RegisterAnime = () => {
     formData.append("description", description);
     formData.append("poster", poster);
     formData.append("id_user", idUser);
+    formData.append("_id", idTemp);
 
-    addAnime(formData);
+    return formData;
+  };
+
+  const sendAndRegister = () => {
+    addAnime(applyFormData());
+  };
+
+  const sendAndUpdate = () => {
+    updateAnime(applyFormData());
   };
 
   useEffect(() => {
@@ -67,7 +78,7 @@ const RegisterAnime = () => {
       className={`animated__animated ${animation} relative w-[17rem] rounded-md flex justify-center flex-wrap bg-[#2B2D2F] p-6`}
     >
       <div className="absolute right-2 top-2">
-        <Close action={sendClose} />
+        <Close action={closeWindow} />
       </div>
 
       <label htmlFor="" className="text-center font-bold mb-1">
@@ -103,7 +114,7 @@ const RegisterAnime = () => {
       />
 
       <div className="w-full flex justify-center items-center">
-        <Ok action={send} />
+        <Ok action={sendAndRegister} />
       </div>
     </div>
   );

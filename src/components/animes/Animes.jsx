@@ -5,9 +5,8 @@ import { useState } from "react";
 import { useEffect } from "react";
 
 const Animes = () => {
-  const { animesCopy, deleteAnime } = useContext(store);
-
-  const [idTemp, setIdTemp] = useState("");
+  const { animesCopy, deleteAnime, idTemp, setIdTemp, editMode, setEditMode } =
+    useContext(store);
 
   const saveIdTemp = (idCurrent) => {
     setIdTemp(idCurrent);
@@ -15,6 +14,10 @@ const Animes = () => {
     if (idTemp == idCurrent) {
       setIdTemp("");
     }
+  };
+
+  const update = () => {
+    setEditMode(true);
   };
 
   return (
@@ -61,6 +64,7 @@ const Animes = () => {
             <i
               id="edit-anime"
               className="bi bi-pencil-square cursor-pointer"
+              onClick={update}
             ></i>
             <i
               id="delete-anime"

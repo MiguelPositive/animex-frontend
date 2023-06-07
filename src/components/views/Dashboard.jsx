@@ -18,14 +18,19 @@ const Dashboard = () => {
     setAnimesCopy,
     animesCopy,
     animes,
+    editMode,
   } = useContext(store);
 
   const [showRegister, setShowRegister] = useState("hidden");
-  const [activeOverflow, setActiveOverflow] = useState(false);
+  const [activeOverflow, setActiveOverflow] = useState(true);
 
   const sendOption = () => {
     setShowRegisterAnime(true);
   };
+
+  useEffect(() => {
+    getAnimes();
+  }, []);
 
   useEffect(() => {
     /*Este useEffect me muestra u oculta la venta de registro de anime
@@ -34,26 +39,25 @@ con un retardo para mostrar la animación de salida de la ventana*/
     if (showRegisterAnime) {
       setShowRegister("absolute");
       setActiveBlur("show-register-anime");
-      setActiveOverflow(!activeOverflow);
+      setActiveOverflow(false);
     } else {
       setTimeout(() => {
         setShowRegister("hidden");
         setActiveBlur("hidden-register-anime");
-        setActiveOverflow(!activeOverflow);
+        setActiveOverflow(true);
       }, 500);
     }
   }, [showRegisterAnime]);
 
-  useEffect(() => {
-    getAnimes();
-  }, []);
+  // useEffect(() => {
 
-  useEffect(() => {
-    console.log(animesCopy);
-  }, [animesCopy]);
+  //   if(editMode){
+
+  //   }
+  // }, [editMode]);
   return (
     <div
-      className={`${activeOverflow ? "w-screen h-screen overflow-hidden" : ""}`}
+      className={`${activeOverflow ? "" : "w-screen h-screen overflow-hidden"}`}
     >
       <div
         id="container-dashboard"

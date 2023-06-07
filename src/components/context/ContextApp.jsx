@@ -27,6 +27,11 @@ const ContextApp = ({ children }) => {
   const [animes, setAnimes] = useState([]);
   const [animesCopy, setAnimesCopy] = useState([]);
 
+  //Es el id que se va utilizar para editar o borrar un anime
+  const [idTemp, setIdTemp] = useState("");
+
+  const [editMode, setEditMode] = useState(false);
+
   const handleChangeUser = (newUser) => {
     setUser(newUser);
   };
@@ -169,6 +174,19 @@ const ContextApp = ({ children }) => {
     }
   };
 
+  const updateAnime = async (formData) => {
+    try {
+      await axios.post(
+        "https://animex-backend.onrender.com/update-anime",
+        formData
+      );
+    } catch (error) {
+      console.log(
+        `ocurrio un error en el frontend al intentar actualizar el anime ${error}`
+      );
+    }
+  };
+
   const deleteAnime = async (idTemp) => {
     try {
       await axios.post("https://animex-backend.onrender.com/delete-anime", {
@@ -202,15 +220,20 @@ const ContextApp = ({ children }) => {
         idUser,
         showRegisterAnime,
         setShowRegisterAnime,
+        idTemp,
+        setIdTemp,
         activeBlur,
         setActiveBlur,
         addAnime,
         getAnimes,
+        updateAnime,
         deleteAnime,
         animes,
         setAnimes,
         setAnimesCopy,
         animesCopy,
+        editMode,
+        setEditMode,
       }}
     >
       {children}
