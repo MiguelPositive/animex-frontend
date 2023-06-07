@@ -169,6 +169,20 @@ const ContextApp = ({ children }) => {
     }
   };
 
+  const deleteAnime = async (idTemp) => {
+    try {
+      await axios.post("https://animex-backend.onrender.com/delete-anime", {
+        idTemp,
+      });
+
+      getAnimes();
+    } catch (error) {
+      console.log(
+        `ocurrio un error en el frontend al intentar eliminar el anime. ${error}`
+      );
+    }
+  };
+
   return (
     <store.Provider
       value={{
@@ -192,6 +206,7 @@ const ContextApp = ({ children }) => {
         setActiveBlur,
         addAnime,
         getAnimes,
+        deleteAnime,
         animes,
         setAnimes,
         setAnimesCopy,
