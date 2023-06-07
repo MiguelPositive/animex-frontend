@@ -5,8 +5,16 @@ import { useState } from "react";
 import { useEffect } from "react";
 
 const Animes = () => {
-  const { animesCopy, deleteAnime, idTemp, setIdTemp, editMode, setEditMode } =
-    useContext(store);
+  const {
+    animesCopy,
+    deleteAnime,
+    idTemp,
+    setIdTemp,
+    editMode,
+    setEditMode,
+    setShowRegisterAnime,
+    getNameAnime,
+  } = useContext(store);
 
   const saveIdTemp = (idCurrent) => {
     setIdTemp(idCurrent);
@@ -18,6 +26,8 @@ const Animes = () => {
 
   const update = () => {
     setEditMode(true);
+    setShowRegisterAnime(true);
+    getNameAnime(idTemp);
   };
 
   return (

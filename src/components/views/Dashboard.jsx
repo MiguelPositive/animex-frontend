@@ -36,6 +36,8 @@ const Dashboard = () => {
     /*Este useEffect me muestra u oculta la venta de registro de anime
 con un retardo para mostrar la animación de salida de la ventana*/
 
+    // console.log(showRegister);
+
     if (showRegisterAnime) {
       setShowRegister("absolute");
       setActiveBlur("show-register-anime");
@@ -49,12 +51,19 @@ con un retardo para mostrar la animación de salida de la ventana*/
     }
   }, [showRegisterAnime]);
 
-  // useEffect(() => {
-
-  //   if(editMode){
-
-  //   }
-  // }, [editMode]);
+  useEffect(() => {
+    if (editMode) {
+      setShowRegister("absolute");
+      setActiveBlur("show-register-anime");
+      setActiveOverflow(false);
+    } else if (editMode === false) {
+      setTimeout(() => {
+        setShowRegister("hidden");
+        setActiveBlur("hidden-register-anime");
+        setActiveOverflow(true);
+      }, 500);
+    }
+  }, [editMode]);
   return (
     <div
       className={`${activeOverflow ? "" : "w-screen h-screen overflow-hidden"}`}

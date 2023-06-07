@@ -32,6 +32,8 @@ const ContextApp = ({ children }) => {
 
   const [editMode, setEditMode] = useState(false);
 
+  const [nameAnime, setNameAnime] = useState("");
+
   const handleChangeUser = (newUser) => {
     setUser(newUser);
   };
@@ -160,6 +162,17 @@ const ContextApp = ({ children }) => {
     }
   };
 
+  const getNameAnime = async (id) => {
+    let temp = await animesCopy.filter((iterator) => {
+      if (iterator._id == id) {
+        return iterator;
+      }
+    });
+
+    // console.log(temp[0].name);
+    setNameAnime(temp[0].name);
+  };
+
   const addAnime = async (formData) => {
     try {
       await axios.post(
@@ -226,6 +239,8 @@ const ContextApp = ({ children }) => {
         setActiveBlur,
         addAnime,
         getAnimes,
+        getNameAnime,
+        nameAnime,
         updateAnime,
         deleteAnime,
         animes,

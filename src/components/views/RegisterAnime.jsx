@@ -16,6 +16,9 @@ const RegisterAnime = () => {
     addAnime,
     updateAnime,
     idTemp,
+    editMode,
+    setEditMode,
+    nameAnime,
   } = useContext(store);
 
   const [name, setName] = useState("");
@@ -26,6 +29,7 @@ const RegisterAnime = () => {
 
   const closeWindow = () => {
     setShowRegisterAnime(false);
+    setEditMode(false);
   };
 
   const handleChangeName = (e) => {
@@ -89,6 +93,7 @@ const RegisterAnime = () => {
         type="text"
         className="w-full mb-6 rounded-md bg-black/0 focus:outline-none border-white/50 border-[1px] pl-3 pr-3"
         onChange={handleChangeName}
+        value={(editMode ? nameAnime : null) || ""}
       />
 
       <label htmlFor="" className="text-center font-bold mb-1">
