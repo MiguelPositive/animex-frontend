@@ -162,8 +162,8 @@ const ContextApp = ({ children }) => {
     }
   };
 
-  const getNameAnime = async (id) => {
-    let temp = await animesCopy.filter((iterator) => {
+  const getNameAnime = (id) => {
+    let temp = animesCopy.filter((iterator) => {
       if (iterator._id == id) {
         return iterator;
       }
@@ -240,6 +240,7 @@ const ContextApp = ({ children }) => {
         addAnime,
         getAnimes,
         getNameAnime,
+        setNameAnime,
         nameAnime,
         updateAnime,
         deleteAnime,

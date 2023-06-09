@@ -18,6 +18,7 @@ const RegisterAnime = () => {
     idTemp,
     editMode,
     setEditMode,
+    setNameAnime,
     nameAnime,
   } = useContext(store);
 
@@ -30,6 +31,8 @@ const RegisterAnime = () => {
   const closeWindow = () => {
     setShowRegisterAnime(false);
     setEditMode(false);
+    setName("");
+    setNameAnime("");
   };
 
   const handleChangeName = (e) => {
@@ -77,6 +80,12 @@ const RegisterAnime = () => {
     }
   }, [showRegisterAnime]);
 
+  useEffect(() => {
+    if (editMode) {
+      setName(nameAnime);
+    }
+  }, [editMode]);
+
   return (
     <div
       className={`animated__animated ${animation} relative w-[17rem] rounded-md flex justify-center flex-wrap bg-[#2B2D2F] p-6`}
@@ -93,7 +102,7 @@ const RegisterAnime = () => {
         type="text"
         className="w-full mb-6 rounded-md bg-black/0 focus:outline-none border-white/50 border-[1px] pl-3 pr-3"
         onChange={handleChangeName}
-        value={(editMode ? nameAnime : null) || ""}
+        value={editMode ? name : ""}
       />
 
       <label htmlFor="" className="text-center font-bold mb-1">
@@ -119,7 +128,7 @@ const RegisterAnime = () => {
       />
 
       <div className="w-full flex justify-center items-center">
-        <Ok action={sendAndRegister} />
+        <Ok action={editMode ? sendAndUpdate : sendAndRegister} />
       </div>
     </div>
   );
