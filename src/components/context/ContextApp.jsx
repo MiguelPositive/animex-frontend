@@ -189,10 +189,13 @@ const ContextApp = ({ children }) => {
 
   const updateAnime = async (formData) => {
     try {
+      console.log(formData);
       await axios.post(
         "https://animex-backend.onrender.com/update-anime",
         formData
       );
+
+      getAnimes();
     } catch (error) {
       console.log(
         `ocurrio un error en el frontend al intentar actualizar el anime ${error}`
