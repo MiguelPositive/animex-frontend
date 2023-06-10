@@ -17,11 +17,9 @@ const Dashboard = () => {
     getIdUser,
     getAnimes,
     user,
-    setAnimesCopy,
-    animesCopy,
-    animes,
     editMode,
     idUser,
+    counter,
   } = useContext(store);
 
   const [showRegister, setShowRegister] = useState("hidden");
@@ -98,7 +96,7 @@ con un retardo para mostrar la animación de salida de la ventana*/
             className="flex justify-between items-center flex-wrap mt-3"
           >
             <div className="">
-              <Options title={"# 10"} add={false} />
+              <Options title={counter} add={false} />
             </div>
             <div>
               <Options title={"Agregar anime"} add={true} action={sendOption} />

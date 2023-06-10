@@ -160,9 +160,10 @@ const ContextApp = ({ children }) => {
         id_user: idUser,
       });
 
-      console.log(await animesData);
+      // console.log(await animesData);
       setAnimes(await animesData);
       setAnimesCopy(await animesData);
+      setCounter(await animesData.length);
     } catch (error) {
       console.log(
         `ocurrio un error en el frontend al intentar consultar los animes. ${error}`
@@ -261,7 +262,8 @@ const ContextApp = ({ children }) => {
         animesCopy,
         editMode,
         setEditMode,
-        idUser,
+        counter,
+        setCounter,
       }}
     >
       {children}
