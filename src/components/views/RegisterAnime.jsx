@@ -53,8 +53,6 @@ const RegisterAnime = () => {
 
     const formData = new FormData();
 
-    getIdUser(user);
-
     formData.append("name", name);
     formData.append("description", description);
     formData.append("poster", poster);
@@ -102,7 +100,7 @@ const RegisterAnime = () => {
         type="text"
         className="w-full mb-6 rounded-md bg-black/0 focus:outline-none border-white/50 border-[1px] pl-3 pr-3"
         onChange={handleChangeName}
-        value={editMode ? name : ""}
+        value={name}
       />
 
       <label htmlFor="" className="text-center font-bold mb-1">

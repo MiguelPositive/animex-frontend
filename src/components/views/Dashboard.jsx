@@ -14,11 +14,14 @@ const Dashboard = () => {
     showRegisterAnime,
     activeBlur,
     setActiveBlur,
+    getIdUser,
     getAnimes,
+    user,
     setAnimesCopy,
     animesCopy,
     animes,
     editMode,
+    idUser,
   } = useContext(store);
 
   const [showRegister, setShowRegister] = useState("hidden");
@@ -29,8 +32,14 @@ const Dashboard = () => {
   };
 
   useEffect(() => {
-    getAnimes();
+    getIdUser(user);
   }, []);
+
+  useEffect(() => {
+    if (idUser != undefined) {
+      getAnimes();
+    }
+  }, [idUser]);
 
   useEffect(() => {
     /*Este useEffect me muestra u oculta la venta de registro de anime
@@ -96,7 +105,7 @@ con un retardo para mostrar la animación de salida de la ventana*/
             </div>
           </div>
 
-          <div className="flex justify-center items-center gap-5 flex-wrap mt-5">
+          <div className="flex justify-center items-center gap-5 flex-wrap mt-5 pb-7">
             <Animes />
           </div>
         </div>

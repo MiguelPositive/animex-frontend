@@ -34,6 +34,8 @@ const ContextApp = ({ children }) => {
 
   const [nameAnime, setNameAnime] = useState("");
 
+  const [counter, setCounter] = useState(0);
+
   const handleChangeUser = (newUser) => {
     setUser(newUser);
   };
@@ -140,6 +142,7 @@ const ContextApp = ({ children }) => {
       });
 
       setIdUser(await id);
+      console.log(id);
     } catch (error) {
       console.log(
         `ocurrio un error en el frontend al intentar consultar el id del usuario. ${error}`
@@ -148,11 +151,16 @@ const ContextApp = ({ children }) => {
   };
 
   const getAnimes = async () => {
+    console.log(`id user en get animes: ${idUser}`);
+
     try {
       const {
         data: { animesData },
-      } = await axios.get("https://animex-backend.onrender.com/get-animes");
+      } = await axios.post("https://animex-backend.onrender.com/get-animes", {
+        id_user: idUser,
+      });
 
+      console.log(await animesData);
       setAnimes(await animesData);
       setAnimesCopy(await animesData);
     } catch (error) {
@@ -253,6 +261,7 @@ const ContextApp = ({ children }) => {
         animesCopy,
         editMode,
         setEditMode,
+        idUser,
       }}
     >
       {children}
