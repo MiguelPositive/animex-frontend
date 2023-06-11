@@ -3,6 +3,9 @@ import { useContext } from "react";
 import { store } from "../context/ContextApp";
 import { useNavigate } from "react-router-dom";
 import { errorCredentials } from "../windows/errorCredentials";
+import Cookies from "universal-cookie";
+
+export const cookies = new Cookies();
 
 function useValidateCredentials() {
   const {
@@ -12,6 +15,7 @@ function useValidateCredentials() {
     register,
     createUser,
     correctCredentiasl,
+    getIdUser,
   } = useContext(store);
   const navigate = useNavigate();
 
@@ -32,6 +36,11 @@ function useValidateCredentials() {
         let temp = await correctCredentiasl(user, password);
 
         if (temp === true) {
+          cookies.set("cookieUser", user, { path: "/" });
+          getIdUser(user);
+
+          // console.log(cookies.get("cookieUser"));
+
           navigate("/dashboard");
         } else {
           errorCredentials();

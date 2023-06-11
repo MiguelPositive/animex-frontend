@@ -8,6 +8,7 @@ import axios from "axios";
 
 //windows
 import userRegistered from "../windows/userRegistered.js";
+import { cookies } from "../hooks/useValidateCredentials.jsx";
 
 export const store = createContext();
 
@@ -22,6 +23,7 @@ const ContextApp = ({ children }) => {
 
   const [activeBlur, setActiveBlur] = useState("");
 
+  // uso esa variable para traer el id del respectivo usuario y almacenarlo en las cookies
   const [idUser, setIdUser] = useState("");
 
   const [animes, setAnimes] = useState([]);
@@ -133,15 +135,16 @@ const ContextApp = ({ children }) => {
     }
   };
 
-  const getIdUser = async (user) => {
+  const getIdUser = async (value1, value2) => {
     try {
       const {
         data: { id },
       } = await axios.post("https://animex-backend.onrender.com/get-id-user", {
-        user,
+        user: value1 || value2,
       });
 
       setIdUser(await id);
+      cookies.set("cookiesUserId", id, { path: "/" });
       console.log(id);
     } catch (error) {
       console.log(
@@ -151,13 +154,15 @@ const ContextApp = ({ children }) => {
   };
 
   const getAnimes = async () => {
-    console.log(`id user en get animes: ${idUser}`);
+    console.log(
+      `id de usaurio de cookie en get animes: ${cookies.get("cookiesUserId")}`
+    );
 
     try {
       const {
         data: { animesData },
       } = await axios.post("https://animex-backend.onrender.com/get-animes", {
-        id_user: idUser,
+        id_user: cookies.get("cookiesUserId"),
       });
 
       // console.log(await animesData);

@@ -6,6 +6,8 @@ import { useEffect } from "react";
 import { useContext } from "react";
 import { store } from "../context/ContextApp.jsx";
 
+import { cookies } from "../hooks/useValidateCredentials";
+
 const RegisterAnime = () => {
   const {
     showRegisterAnime,
@@ -56,7 +58,7 @@ const RegisterAnime = () => {
     formData.append("name", name);
     formData.append("description", description);
     formData.append("poster", poster);
-    formData.append("id_user", idUser);
+    formData.append("id_user", cookies.get("cookiesUserId"));
     formData.append("_id", idTemp);
 
     return formData;

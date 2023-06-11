@@ -7,6 +7,7 @@ import { useEffect } from "react";
 import { useState } from "react";
 import { useContext } from "react";
 import { store } from "../context/ContextApp.jsx";
+import { cookies } from "../hooks/useValidateCredentials";
 
 const Dashboard = () => {
   const {
@@ -30,18 +31,14 @@ const Dashboard = () => {
   };
 
   useEffect(() => {
-    getIdUser(user);
-  }, []);
-
-  useEffect(() => {
-    if (idUser != undefined) {
+    if (typeof idUser !== "undefined") {
       getAnimes();
     }
   }, [idUser]);
 
   useEffect(() => {
     /*Este useEffect me muestra u oculta la venta de registro de anime
-con un retardo para mostrar la animación de salida de la ventana*/
+   con un retardo para mostrar la animación de salida de la ventana*/
 
     // console.log(showRegister);
 

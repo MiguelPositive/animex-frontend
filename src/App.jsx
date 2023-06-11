@@ -12,7 +12,7 @@ function App() {
     },
     { path: "/register", element: <RegisterUser /> },
     { path: "/dashboard", element: <Dashboard /> },
-    { path: "*", element: <h1>PAGINA NO ENCONTRADA</h1> },
+    { path: "*", element: <Login /> },
   ]);
 
   return (
