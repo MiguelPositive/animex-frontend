@@ -72,6 +72,8 @@ const RegisterAnime = () => {
     updateAnime(applyFormData());
   };
 
+  const dropHandler = () => {};
+
   useEffect(() => {
     if (showRegisterAnime) {
       setAnimation("animate__bounceIn");
@@ -105,28 +107,28 @@ const RegisterAnime = () => {
         value={name}
       />
 
-      <label htmlFor="" className="text-center font-bold mb-1">
-        Descripción del anime
-      </label>
-      <textarea
-        name=""
-        id=""
-        cols="30"
-        rows="6"
-        className="w-full mb-6 rounded-md bg-black/0 focus:outline-none border-white/50 border-[1px] pl-3 pr-3 pt-2"
-        onChange={handleChangeDescription}
-      ></textarea>
+      <div
+        id="drag-zone"
+        className="w-full flex flex-wrap rounded-md border-dashed border-2 border-white p-4 mb-5"
+        onDrop={() => {
+          dropHandler();
+        }}
+      >
+        <label
+          htmlFor="input-poster"
+          className="w-full text-center font-bold p-2 rounded-md cursor-pointer bg-[#D87A31] transition-all duration-100 hover:scale-110"
+        >
+          Arraste o suelte la imgen del poster
+        </label>
 
-      <label htmlFor="" className="w-full text-center font-bold mb-1">
-        Poster
-      </label>
-      <input
-        type="file"
-        name="file"
-        className="mb-5"
-        onChange={handleChangePoster}
-      />
-
+        <input
+          type="file"
+          name="file"
+          id="input-poster"
+          className="hidden"
+          onChange={handleChangePoster}
+        />
+      </div>
       <div className="w-full flex justify-center items-center">
         <Ok action={editMode ? sendAndUpdate : sendAndRegister} />
       </div>
