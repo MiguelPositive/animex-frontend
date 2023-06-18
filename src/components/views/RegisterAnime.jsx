@@ -30,6 +30,8 @@ const RegisterAnime = () => {
 
   const [animation, setAnimation] = useState("");
 
+  const [border, setBorder] = useState("");
+
   const closeWindow = () => {
     setShowRegisterAnime(false);
     setEditMode(false);
@@ -72,7 +74,27 @@ const RegisterAnime = () => {
     updateAnime(applyFormData());
   };
 
-  const dropHandler = () => {};
+  /*Es necesarrio poner e.preventDefault() en el evento
+onDrop para que el navegador no abra la imagen que se le esta
+soltando, sino que procese la imagen como se quiere en el evento.
+
+Ademas, se debe poer e.preventDefault() en el evento onDragOver para
+que funcion el evento onDrop*/
+
+  const handlerDrop = (e) => {
+    e.preventDefault();
+
+    setPoster(e.dataTransfer.files[0]);
+  };
+
+  const handlerDragOver = (e) => {
+    e.preventDefault();
+    setBorder("border-dashed");
+  };
+
+  const handleDragLeave = () => {
+    setBorder("");
+  };
 
   useEffect(() => {
     if (showRegisterAnime) {
@@ -109,16 +131,16 @@ const RegisterAnime = () => {
 
       <div
         id="drag-zone"
-        className="w-full flex flex-wrap rounded-md border-dashed border-2 border-white p-4 mb-5"
-        onDrop={() => {
-          dropHandler();
-        }}
+        onDragOver={handlerDragOver}
+        onDragLeave={handleDragLeave}
+        onDrop={handlerDrop}
+        className={`w-full flex flex-wrap rounded-md border-2 border-white p-4 pb-0 mb-5 ${border} overflow-hidden`}
       >
         <label
           htmlFor="input-poster"
           className="w-full text-center font-bold p-2 rounded-md cursor-pointer bg-[#D87A31] transition-all duration-100 hover:scale-110"
         >
-          Arraste o suelte la imgen del poster
+          Arraste o suelte la imagen del poster
         </label>
 
         <input
@@ -128,6 +150,8 @@ const RegisterAnime = () => {
           className="hidden"
           onChange={handleChangePoster}
         />
+
+        <div className="w-[20rem] h-[15rem] bg-dance bg-cover "></div>
       </div>
       <div className="w-full flex justify-center items-center">
         <Ok action={editMode ? sendAndUpdate : sendAndRegister} />
