@@ -41,7 +41,7 @@ const Animes = () => {
             id="text-anime"
             className="w-full flex flex-wrap justify-center items-center text-black mt-5 "
           >
-            <p className="w-full text-center text-black text-2xl font-bold">
+            <p className="w-full text-center text-black text-xl font-bold">
               {anime.name}
             </p>
           </div>

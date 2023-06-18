@@ -5,6 +5,8 @@ import { useNavigate } from "react-router-dom";
 import { errorCredentials } from "../windows/errorCredentials";
 import Cookies from "universal-cookie";
 
+import userRegistered from "../windows/userRegistered";
+
 export const cookies = new Cookies();
 
 function useValidateCredentials() {
@@ -30,16 +32,15 @@ function useValidateCredentials() {
   const redirect = async () => {
     if (inputsEmpy === false) {
       if (register) {
-        console.log("se van a registrar las credenciales");
         createUser(user, password);
+        userRegistered();
+        navigate("/");
       } else if (register === false) {
         let temp = await correctCredentiasl(user, password);
 
         if (temp === true) {
           cookies.set("cookieUser", user, { path: "/" });
           getIdUser(user);
-
-          // console.log(cookies.get("cookieUser"));
 
           navigate("/dashboard");
         } else {

@@ -7,7 +7,7 @@ import { useEffect } from "react";
 import axios from "axios";
 
 //windows
-import userRegistered from "../windows/userRegistered.js";
+
 import { cookies } from "../hooks/useValidateCredentials.jsx";
 
 export const store = createContext();
@@ -98,7 +98,6 @@ const ContextApp = ({ children }) => {
         user,
         password,
       });
-      userRegistered();
     } catch (error) {
       console.log(
         `error en el frontend al intentar crear un usuario. ${error}`
