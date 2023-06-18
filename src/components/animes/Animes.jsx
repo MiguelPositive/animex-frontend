@@ -34,12 +34,12 @@ const Animes = () => {
     <div className="flex justify-center gap-5 flex-wrap ">
       {animesCopy.map((anime) => (
         <div
-          className={`relative w-[14rem] h-[20rem] bg-white rounded-md  overflow-hidden transition-all duration-200 hover:scale-110 z-10`}
+          className={`relative w-[14rem] h-[22rem] bg-white rounded-md  overflow-hidden transition-all duration-200 hover:scale-110 z-10`}
           key={anime._id}
         >
           <div
             id="text-anime"
-            className="w-full flex flex-wrap justify-center items-center text-black h-[5rem] "
+            className="w-full flex flex-wrap justify-center items-center text-black mt-5 "
           >
             <p className="w-full text-center text-black text-2xl font-bold">
               {anime.name}
@@ -48,7 +48,7 @@ const Animes = () => {
 
           <img
             id="image-anime"
-            className="-mt-4 w-full h-[17rem]"
+            className="absolute bottom-0 w-full h-[17rem]"
             src={`https://animex-backend.onrender.com/imgsAnime/${anime.poster}`}
             alt={`Poster ${anime.name}`}
           />
