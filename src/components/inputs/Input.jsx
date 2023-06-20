@@ -4,7 +4,7 @@ import { useEffect } from "react";
 import { useContext } from "react";
 import { store } from "../context/ContextApp";
 
-const Input = ({ placeholder, isUser, id, color }) => {
+const Input = ({ placeholder, isUser, id, color, keyDown }) => {
   const [moveLabel, setMoveLabel] = useState(false);
   const [showLabel, setShowLabel] = useState("");
   const [showScroll, setShowScroll] = useState(false);
@@ -77,6 +77,12 @@ const Input = ({ placeholder, isUser, id, color }) => {
     }
   }, [showScroll]);
 
+  const handleKeyDown = (e) => {
+    if (e.key == "Enter") {
+      keyDown();
+    }
+  };
+
   return (
     <div className="relative ">
       <label
@@ -89,7 +95,7 @@ const Input = ({ placeholder, isUser, id, color }) => {
       </label>
 
       <div
-        className={`overflow-hidden relative  after:content-[''] after:absolute after:top-5 after:right-52
+        className={`overflow-hidden relative  after:content-[''] after:absolute after:top-5 after:right-50
        after:border-b-[3px] after:rounded-[300rem]  ${
          color == "black" ? "after:border-black" : "after:border-white/80"
        } after:w-full after:transition-all after:duration-500 ${moveScroll}`}
@@ -103,6 +109,7 @@ const Input = ({ placeholder, isUser, id, color }) => {
           onFocus={handleMoveLabel}
           onBlur={handleBlur}
           onChange={handleChange}
+          onKeyDown={handleKeyDown}
         />
 
         <i

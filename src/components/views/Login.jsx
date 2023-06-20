@@ -9,8 +9,13 @@ import Access from "../inputs/Access";
 import FillFields from "../helper/FillFields";
 
 const Login = () => {
-  const { handleSendLogin, setInputsEmpy, inputsEmpy, handleViewCenter } =
-    useContext(store);
+  const {
+    handleSendLogin,
+    setInputsEmpy,
+    inputsEmpy,
+    handleViewCenter,
+    setRegister,
+  } = useContext(store);
 
   const { validateInputEmpy, redirect } = useValidateCredentials();
 
@@ -24,7 +29,7 @@ const Login = () => {
 
   useEffect(() => {
     handleViewCenter();
-    // setInputsEmpy(false);
+    setRegister(null);
   }, []);
 
   useEffect(() => {
@@ -52,7 +57,13 @@ const Login = () => {
         className={`min-h-[18rem] w-[15rem] pt-10 pl-5 pr-5  bg-[#1E142E] bg-opacity-25 rounded-md shadow-global shadow-black/25 400px:w-[18rem]   400px:pl-7 400px:pr-7  ${animationLogin}`}
       >
         <div className="mb-10">
-          <Input placeholder={"Usuario"} isUser={true} id={1} color={"black"} />
+          <Input
+            placeholder={"Usuario"}
+            isUser={true}
+            id={1}
+            color={"black"}
+            keyDown={send}
+          />
         </div>
         <div className="mb-8">
           <Input
@@ -60,6 +71,7 @@ const Login = () => {
             isUser={false}
             id={2}
             color={"black"}
+            keyDown={send}
           />
         </div>
         <div className="mb-5">

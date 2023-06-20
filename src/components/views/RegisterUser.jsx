@@ -57,7 +57,13 @@ const RegisterUser = () => {
         </div>
 
         <div className="mb-12">
-          <Input id={3} isUser={true} placeholder={"Usuario"} color={"white"} />
+          <Input
+            id={3}
+            isUser={true}
+            placeholder={"Usuario"}
+            color={"white"}
+            keyDown={send}
+          />
         </div>
         <div className="mb-12">
           <Input
@@ -65,6 +71,7 @@ const RegisterUser = () => {
             isUser={!true}
             placeholder={"Contraseña"}
             color={"white"}
+            keyDown={send}
           />
         </div>
 

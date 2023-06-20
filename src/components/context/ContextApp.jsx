@@ -38,6 +38,8 @@ const ContextApp = ({ children }) => {
 
   const [counter, setCounter] = useState(0);
 
+  const [exitUser, setExitUser] = useState(false);
+
   const handleChangeUser = (newUser) => {
     setUser(newUser);
   };
@@ -244,6 +246,7 @@ const ContextApp = ({ children }) => {
         handleSendRegister,
         correctCredentiasl,
         register,
+        setRegister,
         createUser,
         getIdUser,
         idUser,
@@ -268,6 +271,8 @@ const ContextApp = ({ children }) => {
         setEditMode,
         counter,
         setCounter,
+        exitUser,
+        setExitUser,
       }}
     >
       {children}

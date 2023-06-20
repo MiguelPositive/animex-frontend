@@ -21,6 +21,7 @@ const Dashboard = () => {
     editMode,
     idUser,
     counter,
+    exitUser,
   } = useContext(store);
 
   const [showRegister, setShowRegister] = useState("hidden");
@@ -90,7 +91,9 @@ const Dashboard = () => {
 
           <div
             id="options-dashboard"
-            className="flex justify-between items-center flex-wrap mt-3"
+            className={`flex justify-between items-center flex-wrap mt-3 transition-all duration-200 ${
+              exitUser ? "pt-20" : "pt-0"
+            }`}
           >
             <div className="">
               <Options title={counter} add={false} />

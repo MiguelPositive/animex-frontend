@@ -57,6 +57,12 @@ body {
   animation-duration: 500ms;
 }
 
+/* .options-animation {
+  animation-name: options-animation;
+  animation-fill-mode: forwards;
+  animation-duration: 300ms;
+} */
+
 @keyframes register-empy {
   from {
     height: 22rem;
@@ -130,3 +136,12 @@ body {
     filter: blur(0px);
   }
 }
+
+/* @keyframes options-animation {
+  from {
+    padding-top: 0;
+  }
+  top {
+    padding-top: 5rem;
+  }
+} */

@@ -33,8 +33,11 @@ function useValidateCredentials() {
     if (inputsEmpy === false) {
       if (register) {
         createUser(user, password);
-        userRegistered();
         navigate("/");
+
+        setTimeout(() => {
+          userRegistered();
+        }, 150);
       } else if (register === false) {
         let temp = await correctCredentiasl(user, password);
 
