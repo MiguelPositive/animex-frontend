@@ -38,7 +38,7 @@ const ContextApp = ({ children }) => {
 
   const [counter, setCounter] = useState(0);
 
-  const [exitUser, setExitUser] = useState(false);
+  const [exitUser, setExitUser] = useState(null);
 
   const handleChangeUser = (newUser) => {
     setUser(newUser);

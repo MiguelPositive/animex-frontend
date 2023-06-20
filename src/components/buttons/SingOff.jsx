@@ -10,13 +10,16 @@ const SingOff = () => {
   const { exitUser, setExitUser } = useContext(store);
 
   const [opacity, setOpacity] = useState("opacity-0");
+  const [hidden, setHidden] = useState("hidden");
   const navigate = useNavigate();
 
   const handleClick = () => {
-    if (exitUser === false) {
+    if (exitUser === null) {
       setExitUser(true);
     } else if (exitUser) {
       setExitUser(false);
+    } else {
+      setExitUser(true);
     }
   };
 
@@ -31,8 +34,14 @@ const SingOff = () => {
   useEffect(() => {
     if (exitUser) {
       setOpacity("opacity-100");
+      setTimeout(() => {
+        setHidden("");
+      }, 100);
     } else {
       setOpacity("opacity-0");
+      setTimeout(() => {
+        setHidden("hidden");
+      }, 100);
     }
   }, [exitUser]);
 
@@ -44,12 +53,12 @@ const SingOff = () => {
       ></div>
 
       <div
-        className={`w-5 h-5 bg-[#911C1C] rotate-45 absolute right-4 top-14 cursor-pointer ${opacity}`}
+        className={`w-5 h-5 bg-[#911C1C] rotate-45 absolute right-4 top-14 cursor-pointer ${opacity} ${hidden}`}
         onClick={deleteCookies}
       ></div>
 
       <div
-        className={`w-32 h-10 text-center font-bold bg-[#911C1C] cursor-pointer flex justify-center items-center rounded-full absolute right-0 top-16 transition-all duration-100 hover:shadow-md hover:shadow-black ${opacity}`}
+        className={`${hidden} w-32 h-10 text-center font-bold bg-[#911C1C] cursor-pointer flex justify-center items-center rounded-full absolute right-0 top-16 transition-all duration-100 hover:shadow-md hover:shadow-black ${opacity} `}
         onClick={deleteCookies}
       >
         Salir
