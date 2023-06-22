@@ -7,7 +7,6 @@ import { useEffect } from "react";
 import { useState } from "react";
 import { useContext } from "react";
 import { store } from "../context/ContextApp.jsx";
-import { cookies } from "../hooks/useValidateCredentials";
 
 const Dashboard = () => {
   const {
@@ -15,13 +14,12 @@ const Dashboard = () => {
     showRegisterAnime,
     activeBlur,
     setActiveBlur,
-    getIdUser,
     getAnimes,
-    user,
     editMode,
     idUser,
     counter,
-    exitUser,
+    changeOpacity,
+    setOutside,
   } = useContext(store);
 
   const [showRegister, setShowRegister] = useState("hidden");
@@ -32,17 +30,10 @@ const Dashboard = () => {
   };
 
   useEffect(() => {
-    if (typeof idUser !== "undefined") {
-      getAnimes();
-    }
+    getAnimes();
   }, [idUser]);
 
   useEffect(() => {
-    /*Este useEffect me muestra u oculta la venta de registro de anime
-   con un retardo para mostrar la animación de salida de la ventana*/
-
-    // console.log(showRegister);
-
     if (showRegisterAnime) {
       setShowRegister("absolute");
       setActiveBlur("show-register-anime");
@@ -69,6 +60,10 @@ const Dashboard = () => {
       }, 500);
     }
   }, [editMode]);
+
+  useEffect(() => {
+    setOutside(false);
+  }, []);
   return (
     <div
       className={`${activeOverflow ? "" : "w-screen h-screen overflow-hidden"}`}
@@ -92,7 +87,7 @@ const Dashboard = () => {
           <div
             id="options-dashboard"
             className={`flex justify-between items-center flex-wrap mt-3 transition-all duration-200 ${
-              exitUser ? "pt-20" : "pt-0"
+              changeOpacity ? "pt-20" : "pt-0"
             }`}
           >
             <div className="">

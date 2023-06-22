@@ -7,32 +7,52 @@ import { cookies } from "../hooks/useValidateCredentials";
 import { useNavigate } from "react-router-dom";
 
 const SingOff = () => {
-  const { exitUser, setExitUser } = useContext(store);
+  const {
+    setAnimes,
+    setAnimesCopy,
+    setUser,
+    setPassword,
+    changeOpacity,
+    setChangeOpacity,
+    setOutside,
+    setInputsEmpy,
+  } = useContext(store);
 
   const [opacity, setOpacity] = useState("opacity-0");
   const [hidden, setHidden] = useState("hidden");
   const navigate = useNavigate();
 
   const handleClick = () => {
-    if (exitUser === null) {
-      setExitUser(true);
-    } else if (exitUser) {
-      setExitUser(false);
+    if (changeOpacity === null) {
+      setChangeOpacity(true);
+    } else if (changeOpacity) {
+      setChangeOpacity(false);
     } else {
-      setExitUser(true);
+      setChangeOpacity(true);
     }
   };
 
-  const deleteCookies = () => {
-    cookies.set("cookieUser", "", { path: "/" });
+  const closeSession = () => {
+    cookies.set("cookiesUser", "", { path: "/" });
     cookies.set("cookiesUserId", "", { path: "/" });
+    cookies.set("logged", "", { path: "/" });
 
+    setOutside(true);
+
+    setInputsEmpy(null);
+
+    setUser("");
+    setPassword("");
+
+    setAnimes([]);
+    setAnimesCopy([]);
+
+    setChangeOpacity(false);
     navigate("/");
-    setExitUser(false);
   };
 
   useEffect(() => {
-    if (exitUser) {
+    if (changeOpacity) {
       setOpacity("opacity-100");
       setTimeout(() => {
         setHidden("");
@@ -43,7 +63,7 @@ const SingOff = () => {
         setHidden("hidden");
       }, 100);
     }
-  }, [exitUser]);
+  }, [changeOpacity]);
 
   return (
     <div className="relative">
@@ -54,12 +74,14 @@ const SingOff = () => {
 
       <div
         className={`w-5 h-5 bg-[#911C1C] rotate-45 absolute right-4 top-14 cursor-pointer ${opacity} ${hidden}`}
-        onClick={deleteCookies}
+        onClick={closeSession}
       ></div>
 
       <div
         className={`${hidden} w-32 h-10 text-center font-bold bg-[#911C1C] cursor-pointer flex justify-center items-center rounded-full absolute right-0 top-16 transition-all duration-100 hover:shadow-md hover:shadow-black ${opacity} `}
-        onClick={deleteCookies}
+        onClick={() => {
+          closeSession();
+        }}
       >
         Salir
       </div>

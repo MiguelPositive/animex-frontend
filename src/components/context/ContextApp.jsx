@@ -38,7 +38,10 @@ const ContextApp = ({ children }) => {
 
   const [counter, setCounter] = useState(0);
 
-  const [exitUser, setExitUser] = useState(null);
+  const [changeOpacity, setChangeOpacity] = useState(null);
+
+  //outside = afuera
+  const [outside, setOutside] = useState(true);
 
   const handleChangeUser = (newUser) => {
     setUser(newUser);
@@ -136,12 +139,12 @@ const ContextApp = ({ children }) => {
     }
   };
 
-  const getIdUser = async (value1, value2) => {
+  const getIdUser = async (value1) => {
     try {
       const {
         data: { id },
       } = await axios.post("https://animex-backend.onrender.com/get-id-user", {
-        user: value1 || value2,
+        user: value1,
       });
 
       setIdUser(await id);
@@ -237,6 +240,8 @@ const ContextApp = ({ children }) => {
       value={{
         user,
         password,
+        setUser,
+        setPassword,
         handleChangeUser,
         handleChangePassword,
         inputsEmpy,
@@ -271,8 +276,10 @@ const ContextApp = ({ children }) => {
         setEditMode,
         counter,
         setCounter,
-        exitUser,
-        setExitUser,
+        outside,
+        setOutside,
+        changeOpacity,
+        setChangeOpacity,
       }}
     >
       {children}

@@ -24,7 +24,6 @@ const Login = () => {
 
   const send = () => {
     handleSendLogin(validateInputEmpy());
-    redirect();
   };
 
   useEffect(() => {
@@ -37,11 +36,11 @@ const Login = () => {
       setTimeout(() => {
         setDeleteHelp("hidden");
       }, 500);
+
+      redirect();
     } else {
       setDeleteHelp("block");
     }
-
-    redirect();
   }, [inputsEmpy]);
 
   useEffect(() => {
