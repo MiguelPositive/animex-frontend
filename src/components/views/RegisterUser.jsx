@@ -8,7 +8,7 @@ import { store } from "../context/ContextApp";
 import useValidateCredentials from "../hooks/useValidateCredentials";
 
 const RegisterUser = () => {
-  const { handleViewCenter, handleSendRegister, inputsEmpy } =
+  const { handleViewCenter, handleSendRegister, setInputsEmpy, inputsEmpy } =
     useContext(store);
 
   const [display, setDisplay] = useState("block");
@@ -22,6 +22,7 @@ const RegisterUser = () => {
 
   useEffect(() => {
     handleViewCenter();
+    setInputsEmpy(false);
   }, []);
 
   useEffect(() => {

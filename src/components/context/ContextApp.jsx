@@ -64,7 +64,6 @@ const ContextApp = ({ children }) => {
 
   const handleSendLogin = (value) => {
     setRegister(false);
-    setLoaderDashboard(true);
     setInputsEmpy(value);
   };
 

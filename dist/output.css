@@ -600,10 +600,6 @@ video {
   z-index: 20;
 }
 
-.z-0 {
-  z-index: 0;
-}
-
 .mb-1 {
   margin-bottom: 0.25rem;
 }
@@ -680,20 +676,16 @@ video {
   height: 22rem;
 }
 
+.h-\[5rem\] {
+  height: 5rem;
+}
+
 .h-full {
   height: 100%;
 }
 
 .h-screen {
   height: 100vh;
-}
-
-.h-\[10rem\] {
-  height: 10rem;
-}
-
-.h-\[5rem\] {
-  height: 5rem;
 }
 
 .min-h-\[18rem\] {
@@ -736,6 +728,10 @@ video {
   width: 20rem;
 }
 
+.w-\[5rem\] {
+  width: 5rem;
+}
+
 .w-\[70\%\] {
   width: 70%;
 }
@@ -746,14 +742,6 @@ video {
 
 .w-screen {
   width: 100vw;
-}
-
-.w-\[10rem\] {
-  width: 10rem;
-}
-
-.w-\[5rem\] {
-  width: 5rem;
 }
 
 .min-w-\[16rem\] {
@@ -777,16 +765,6 @@ video {
 
 .animate-spin {
   animation: spin 1s linear infinite;
-}
-
-@keyframes pulse {
-  50% {
-    opacity: .5;
-  }
-}
-
-.animate-pulse {
-  animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
 }
 
 .cursor-pointer {
@@ -1327,12 +1305,10 @@ body {
 @keyframes show-register-anime {
   from {
     opacity: 0;
-    filter: blur(0px);
   }
 
   to {
     opacity: 1;
-    filter: blur(5px);
   }
 }
 

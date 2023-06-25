@@ -15,6 +15,7 @@ const Login = () => {
     handleViewCenter,
     setRegister,
     loaderDashboard,
+    setLoaderDashboard,
   } = useContext(store);
 
   const { validateInputEmpy, redirect } = useValidateCredentials();
@@ -25,7 +26,15 @@ const Login = () => {
   const [hiddenLogin, setHiddenLogin] = useState("");
 
   const send = () => {
-    handleSendLogin(validateInputEmpy());
+    let validation = validateInputEmpy();
+
+    handleSendLogin(validation);
+
+    if (validation === false) {
+      setLoaderDashboard(true);
+    } else {
+      setLoaderDashboard(false);
+    }
   };
 
   useEffect(() => {
@@ -56,6 +65,7 @@ const Login = () => {
       setAnimationLoader("z-20");
       setHiddenLogin("hidden");
     } else {
+      console.log(loaderDashboard);
       setAnimationLoader("hidden");
       setHiddenLogin("");
     }

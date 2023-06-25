@@ -43,10 +43,6 @@ const RegisterAnime = () => {
     setName(e.target.value);
   };
 
-  const handleChangeDescription = (e) => {
-    setDescription(e.target.value);
-  };
-
   const handleChangePoster = (e) => {
     // console.log(e.target.files[0]);
     setPoster(e.target.files[0]);
