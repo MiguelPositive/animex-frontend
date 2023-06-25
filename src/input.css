@@ -10,14 +10,6 @@ body {
   background-color: black;
 }
 
-.register-empy {
-  animation: register-empy 300ms ease forwards;
-}
-
-.register-full {
-  animation: register-full 500ms ease forwards;
-}
-
 .login-empy {
   animation: login-empy 300ms ease forwards;
 }
@@ -40,26 +32,6 @@ body {
   animation-name: hidden-register-anime;
   animation-fill-mode: forwards;
   animation-duration: 500ms;
-}
-
-@keyframes register-empy {
-  from {
-    height: 22rem;
-  }
-
-  to {
-    height: 25rem;
-  }
-}
-
-@keyframes register-full {
-  from {
-    height: 25rem;
-  }
-
-  to {
-    height: 22rem;
-  }
 }
 
 @keyframes login-empy {

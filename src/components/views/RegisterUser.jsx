@@ -46,8 +46,8 @@ const RegisterUser = () => {
     <div className="transition-view overflow-hidden w-screen h-screen bg-bg-register bg-cover bg-bottom flex justify-center items-center p-14 ">
       <div
         id="card-register"
-        className={`p-7 pb-2 shadow-global-dark shadow-black/25 rounded-lg relative min-w-[16rem] min-h-[22rem]    ${
-          inputsEmpy ? "register-empy" : "register-full"
+        className={`p-7 pb-2 shadow-global-dark shadow-black/25 rounded-lg relative w-[18rem] h-[22rem] transition-all duration-300   ${
+          inputsEmpy ? "scale-110" : "register-full"
         }`}
       >
         <div className="absolute right-3 top-3">
@@ -80,7 +80,9 @@ const RegisterUser = () => {
           <Register action={send} />
         </div>
 
-        <FillFields display={display} color={"white"} />
+        <div className="-mt-5">
+          <FillFields display={display} color={"white"} />
+        </div>
       </div>
     </div>
   );
