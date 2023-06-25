@@ -20,6 +20,7 @@ const Dashboard = () => {
     counter,
     changeOpacity,
     setOutside,
+    finishLoader,
   } = useContext(store);
 
   const [showRegister, setShowRegister] = useState("hidden");
@@ -64,6 +65,13 @@ const Dashboard = () => {
   useEffect(() => {
     setOutside(false);
   }, []);
+
+  useEffect(() => {
+    if (finishLoader) {
+      console.log("termino de validar los datos");
+    }
+  }, [finishLoader]);
+
   return (
     <div
       className={`${activeOverflow ? "" : "w-screen h-screen overflow-hidden"}`}

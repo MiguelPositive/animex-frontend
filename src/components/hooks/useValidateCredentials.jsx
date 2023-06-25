@@ -19,6 +19,8 @@ function useValidateCredentials() {
     correctCredentiasl,
     getIdUser,
     outside,
+
+    setLoaderDashboard,
   } = useContext(store);
   const navigate = useNavigate();
 
@@ -35,7 +37,6 @@ function useValidateCredentials() {
       if (register) {
         createUser(user, password);
         navigate("/");
-
         setTimeout(() => {
           userRegistered();
         }, 150);
@@ -45,11 +46,12 @@ function useValidateCredentials() {
         if (temp === true && outside === true) {
           cookies.set("cookiesUser", user, { path: "/" });
           cookies.set("logged", true, { path: "/" });
-          getIdUser(user);
-
+          await getIdUser(user);
+          setLoaderDashboard(false);
           navigate("/dashboard");
         } else {
           errorCredentials();
+          setLoaderDashboard(false);
         }
       }
     }

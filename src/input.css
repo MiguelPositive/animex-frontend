@@ -12,33 +12,18 @@ body {
 
 .register-empy {
   animation: register-empy 300ms ease forwards;
-
-  /* animation-fill-mode: forwards;
-  animation-name: register-empy;
-  animation-duration: 300ms; */
 }
 
 .register-full {
   animation: register-full 500ms ease forwards;
-
-  /* animation-fill-mode: forwards;
-  animation-name: register-full;
-  animation-duration: 500ms; */
 }
 
 .login-empy {
   animation: login-empy 300ms ease forwards;
-  /* animation-fill-mode: forwards;
-  animation-fill-mode: forwards;
-  animation-name: login-empy;
-  animation-duration: 300ms;  */
 }
 
 .login-full {
   animation: login-full 500ms ease forwards;
-  /* animation-name: login-full;
-  animation-fill-mode: forwards;
-  animation-duration: 500ms; */
 }
 
 .transition-view {
@@ -56,12 +41,6 @@ body {
   animation-fill-mode: forwards;
   animation-duration: 500ms;
 }
-
-/* .options-animation {
-  animation-name: options-animation;
-  animation-fill-mode: forwards;
-  animation-duration: 300ms;
-} */
 
 @keyframes register-empy {
   from {
@@ -104,12 +83,10 @@ body {
 @keyframes transition-view {
   from {
     opacity: 0;
-    /* filter: blur(10px); */
   }
 
   to {
     opacity: 1;
-    /* filter: blur(0px); */
   }
 }
 
@@ -136,12 +113,3 @@ body {
     filter: blur(0px);
   }
 }
-
-/* @keyframes options-animation {
-  from {
-    padding-top: 0;
-  }
-  top {
-    padding-top: 5rem;
-  }
-} */

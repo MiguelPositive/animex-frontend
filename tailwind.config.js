@@ -9,6 +9,7 @@ export default {
         "bg-dashboard": "url(../src/imgs/bg-dashboard.jpg)",
         "bg-deku-avatar": "url(../src/imgs/deku-avatar.jpg)",
         "hands-up": "url(../src/imgs/hands-up.png)",
+        loader: "url(../src/imgs/loader.png)",
         dance: "url(https://media.tenor.com/UkK1G2I0EisAAAAi/ast-anime.gif)",
       },
 

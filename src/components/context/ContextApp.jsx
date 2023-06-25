@@ -1,12 +1,9 @@
 import React from "react";
 import { createContext } from "react";
 import { useState } from "react";
-import { useEffect } from "react";
 
 //axios
 import axios from "axios";
-
-//windows
 
 import { cookies } from "../hooks/useValidateCredentials.jsx";
 
@@ -43,6 +40,8 @@ const ContextApp = ({ children }) => {
   //outside = afuera
   const [outside, setOutside] = useState(true);
 
+  const [loaderDashboard, setLoaderDashboard] = useState(false);
+
   const handleChangeUser = (newUser) => {
     setUser(newUser);
   };
@@ -65,6 +64,7 @@ const ContextApp = ({ children }) => {
 
   const handleSendLogin = (value) => {
     setRegister(false);
+    setLoaderDashboard(true);
     setInputsEmpy(value);
   };
 
@@ -158,10 +158,6 @@ const ContextApp = ({ children }) => {
   };
 
   const getAnimes = async () => {
-    console.log(
-      `id de usaurio de cookie en get animes: ${cookies.get("cookiesUserId")}`
-    );
-
     try {
       const {
         data: { animesData },
@@ -169,7 +165,6 @@ const ContextApp = ({ children }) => {
         id_user: cookies.get("cookiesUserId"),
       });
 
-      // console.log(await animesData);
       setAnimes(await animesData);
       setAnimesCopy(await animesData);
       setCounter(await animesData.length);
@@ -280,6 +275,8 @@ const ContextApp = ({ children }) => {
         setOutside,
         changeOpacity,
         setChangeOpacity,
+        loaderDashboard,
+        setLoaderDashboard,
       }}
     >
       {children}
