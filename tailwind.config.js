@@ -5,7 +5,7 @@ export default {
     extend: {
       backgroundImage: {
         "bg-login": "url(../src/imgs/bg-login.avif)",
-        "bg-register": "url(../src/imgs/bg-register.jpg)",
+        "bg-register": "url(../src/imgs/bg-register.avif)",
         "bg-dashboard": "url(../src/imgs/bg-dashboard.jpg)",
         "bg-deku-avatar": "url(../src/imgs/deku-avatar.jpg)",
         "hands-up": "url(../src/imgs/hands-up.png)",
