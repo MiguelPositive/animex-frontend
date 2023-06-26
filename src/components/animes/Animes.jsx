@@ -16,6 +16,8 @@ const Animes = () => {
     getNameAnime,
   } = useContext(store);
 
+  const [animationFilter, setAnimationFilter] = useState("");
+
   const saveIdTemp = (idCurrent) => {
     setIdTemp(idCurrent);
 
@@ -30,11 +32,22 @@ const Animes = () => {
     getNameAnime(idTemp);
   };
 
+  useEffect(() => {
+    setAnimationFilter("");
+
+    if (animationFilter == "") {
+      setAnimationFilter("animate__fadeIn");
+    }
+  }, [animesCopy]);
+
+  useEffect(() => {
+    console.log(animationFilter);
+  }, [animesCopy]);
   return (
-    <div className="flex justify-center gap-5 flex-wrap ">
+    <div className="flex justify-center gap-5 flex-wrap transition-all duration-200">
       {animesCopy.map((anime) => (
         <div
-          className={`relative w-[14rem] h-[22rem] bg-white rounded-md  overflow-hidden transition-all duration-200 hover:scale-110 z-10`}
+          className={`relative w-[14rem] h-[22rem] bg-white rounded-md  overflow-hidden transition-all duration-200 hover:scale-110 z-10 animate__animated ${animationFilter}`}
           key={anime._id}
         >
           <div
