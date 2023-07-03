@@ -106,7 +106,7 @@ const Dashboard = () => {
             </div>
           </div>
 
-          <div className="flex justify-center items-center gap-5 flex-wrap mt-5 pb-7 ">
+          <div className="flex justify-center items-center gap-5 flex-wrap mt-5 pb-7">
             <Animes />
           </div>
         </div>
