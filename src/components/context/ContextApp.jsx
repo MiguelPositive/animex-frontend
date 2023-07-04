@@ -1,11 +1,10 @@
 import React from "react";
 import { createContext } from "react";
 import { useState } from "react";
-
-//axios
 import axios from "axios";
-
 import { cookies } from "../hooks/useValidateCredentials.jsx";
+import { animeRegistered } from "../windows/animeRegistered.js";
+import { animeUpdated } from "../windows/animeUpdated.js";
 
 export const store = createContext();
 
@@ -185,13 +184,19 @@ const ContextApp = ({ children }) => {
     setNameAnime(temp[0].name);
   };
 
-  const addAnime = async (formData) => {
+  const addAnime = async (formData, reset) => {
     try {
       await axios.post(
         "https://animex-backend.onrender.com/add-anime",
         formData
       );
+
+
+      animeRegistered();
       getAnimes();
+      setShowRegisterAnime(false);
+      reset();
+      
     } catch (error) {
       console.log(
         `ocurrio un error en el backend al intentar añadir un anime. ${error}`
@@ -199,7 +204,7 @@ const ContextApp = ({ children }) => {
     }
   };
 
-  const updateAnime = async (formData) => {
+  const updateAnime = async (formData, reset) => {
     try {
       console.log(formData);
       await axios.post(
@@ -207,7 +212,10 @@ const ContextApp = ({ children }) => {
         formData
       );
 
+      animeUpdated();
+      setShowRegisterAnime(false);
       getAnimes();
+      reset();
     } catch (error) {
       console.log(
         `ocurrio un error en el frontend al intentar actualizar el anime ${error}`

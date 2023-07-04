@@ -41,7 +41,7 @@ const Animes = () => {
   }, [animesCopy]);
 
   useEffect(() => {
-    console.log(animationFilter);
+  
   }, [animesCopy]);
   return (
     <div className="flex justify-center gap-5 flex-wrap transition-all duration-200">

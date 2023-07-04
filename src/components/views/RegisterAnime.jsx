@@ -44,7 +44,7 @@ const RegisterAnime = () => {
   };
 
   const handleChangePoster = (e) => {
-    // console.log(e.target.files[0]);
+   
     setPoster(e.target.files[0]);
   };
 
@@ -62,12 +62,17 @@ const RegisterAnime = () => {
     return formData;
   };
 
+  const clean = () => {
+  
+    setName("");
+  }
+
   const sendAndRegister = () => {
-    addAnime(applyFormData());
+    addAnime(applyFormData(), clean);
   };
 
   const sendAndUpdate = () => {
-    updateAnime(applyFormData());
+    updateAnime(applyFormData(), clean);
   };
 
   /*Es necesarrio poner e.preventDefault() en el evento
@@ -91,6 +96,8 @@ que funcion el evento onDrop*/
   const handleDragLeave = () => {
     setBorder("");
   };
+
+
 
   useEffect(() => {
     if (showRegisterAnime) {
