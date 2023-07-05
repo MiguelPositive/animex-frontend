@@ -8,6 +8,9 @@ import { store } from "../context/ContextApp.jsx";
 
 import { cookies } from "../hooks/useValidateCredentials";
 
+import { empySpace } from "../windows/empySpace";
+
+
 const RegisterAnime = () => {
   const {
     showRegisterAnime,
@@ -39,18 +42,17 @@ const RegisterAnime = () => {
     setNameAnime("");
   };
 
-  const handleChangeName = (e) => {
+  const handleChangeName = async (e) => {
     setName(e.target.value);
   };
 
   const handleChangePoster = (e) => {
-   
     setPoster(e.target.files[0]);
+    
   };
 
-  const applyFormData = () => {
-    // utilizo formData para poder enviar el archivo poster
-
+  const applyFormData = async () => {
+      
     const formData = new FormData();
 
     formData.append("name", name);
@@ -68,7 +70,16 @@ const RegisterAnime = () => {
   }
 
   const sendAndRegister = () => {
-    addAnime(applyFormData(), clean);
+
+    if(poster===null){
+
+      empySpace();
+    } else {
+
+      addAnime(applyFormData(), clean);
+    }
+    
+   
   };
 
   const sendAndUpdate = () => {
