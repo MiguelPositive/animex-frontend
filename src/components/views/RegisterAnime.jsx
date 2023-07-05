@@ -10,7 +10,6 @@ import { cookies } from "../hooks/useValidateCredentials";
 
 import { empySpace } from "../windows/empySpace";
 
-
 const RegisterAnime = () => {
   const {
     showRegisterAnime,
@@ -48,11 +47,9 @@ const RegisterAnime = () => {
 
   const handleChangePoster = (e) => {
     setPoster(e.target.files[0]);
-    
   };
 
-  const applyFormData = async () => {
-      
+  const applyFormData = () => {
     const formData = new FormData();
 
     formData.append("name", name);
@@ -65,21 +62,15 @@ const RegisterAnime = () => {
   };
 
   const clean = () => {
-  
     setName("");
-  }
+  };
 
   const sendAndRegister = () => {
-
-    if(poster===null){
-
+    if (poster === null) {
       empySpace();
     } else {
-
       addAnime(applyFormData(), clean);
     }
-    
-   
   };
 
   const sendAndUpdate = () => {
@@ -107,8 +98,6 @@ que funcion el evento onDrop*/
   const handleDragLeave = () => {
     setBorder("");
   };
-
-
 
   useEffect(() => {
     if (showRegisterAnime) {
@@ -159,7 +148,7 @@ que funcion el evento onDrop*/
 
         <input
           type="file"
-          name="file"
+          name="poster"
           id="input-poster"
           className="hidden"
           onChange={handleChangePoster}
