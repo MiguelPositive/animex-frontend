@@ -34,6 +34,9 @@ const RegisterAnime = () => {
 
   const [border, setBorder] = useState("");
 
+  const [miniature, setMiniature] = useState(null);
+  const [activeMiniature, setActiveMiniature] = useState(false);
+
   const closeWindow = () => {
     setShowRegisterAnime(false);
     setEditMode(false);
@@ -47,6 +50,15 @@ const RegisterAnime = () => {
 
   const handleChangePoster = (e) => {
     setPoster(e.target.files[0]);
+    setActiveMiniature(true);
+
+    const reader = new FileReader();
+
+    reader.readAsDataURL(e.target.files[0]);
+    reader.onload = (e) => {
+      e.preventDefault();
+      setMiniature(e.target.result);
+    };
   };
 
   const applyFormData = () => {
@@ -77,17 +89,30 @@ const RegisterAnime = () => {
     updateAnime(applyFormData(), clean);
   };
 
-  /*Es necesarrio poner e.preventDefault() en el evento
-onDrop para que el navegador no abra la imagen que se le esta
-soltando, sino que procese la imagen como se quiere en el evento.
+  /*
+  
+  Es necesarrio poner e.preventDefault() en el evento
+  onDrop para que el navegador no abra la imagen que se le esta
+  soltando, sino que procese la imagen como se quiere en el evento.
 
-Ademas, se debe poer e.preventDefault() en el evento onDragOver para
-que funcion el evento onDrop*/
+  Ademas, se debe poer e.preventDefault() en el evento onDragOver para
+  que funcion el evento onDrop
+  
+  */
 
   const handlerDrop = (e) => {
     e.preventDefault();
 
     setPoster(e.dataTransfer.files[0]);
+    setActiveMiniature(true);
+
+    const reader = new FileReader();
+
+    reader.readAsDataURL(e.dataTransfer.files[0]);
+    reader.onload = (e) => {
+      e.preventDefault();
+      setMiniature(e.target.result);
+    };
   };
 
   const handlerDragOver = (e) => {
@@ -104,6 +129,10 @@ que funcion el evento onDrop*/
       setAnimation("animate__bounceIn");
     } else {
       setAnimation("animate__bounceOut");
+
+      setTimeout(() => {
+        setActiveMiniature(false);
+      }, 500);
     }
   }, [showRegisterAnime]);
 
@@ -154,7 +183,25 @@ que funcion el evento onDrop*/
           onChange={handleChangePoster}
         />
 
-        <div className="w-[20rem] h-[15rem] bg-dance bg-cover "></div>
+        {/* <div className="w-[20rem] h-[15rem] bg-dance bg-cover "></div> */}
+
+        <div className="flex justify-center items-center w-full">
+          <img
+            src={
+              activeMiniature
+                ? miniature
+                : "https://media.tenor.com/UkK1G2I0EisAAAAi/ast-anime.gif"
+            }
+            className={`${
+              activeMiniature
+                ? "mt-7 mb-7 rounded-md max-h-[15rem] animation-miniature"
+                : "w-[20rem] h-[17rem]"
+            }`}
+            alt="Poster del anime"
+            title="Poster del anime"
+
+          />
+        </div>
       </div>
       <div className="w-full flex justify-center items-center">
         <Ok action={editMode ? sendAndUpdate : sendAndRegister} />

@@ -40,45 +40,44 @@ const Animes = () => {
     }
   }, [animesCopy]);
 
-  useEffect(() => {
-  
-  }, [animesCopy]);
+  useEffect(() => {}, [animesCopy]);
   return (
-    <div className="flex justify-center gap-5 flex-wrap transition-all duration-200">
+    <div className="flex justify-center items-center gap-5 flex-wrap transition-all duration-200">
       {animesCopy.map((anime) => (
         <div
-          className={`relative w-[14rem] h-[22rem] bg-white rounded-md  overflow-hidden transition-all duration-200 hover:scale-110 z-10 animate__animated ${animationFilter}`}
+          className={`relative flex justify-center items-center w-[14rem] h-[22rem] bg-[#211F20] rounded-md  overflow-hidden transition-all duration-200 hover:shadow-black hover:shadow-lg hover:scale-110 z-10 animate__animated ${animationFilter}`}
           key={anime._id}
         >
           <div
             id="text-anime"
-            className="w-full flex flex-wrap justify-center items-center text-black mt-5 "
+            className="absolute z-10 bottom-2 w-full flex flex-wrap justify-center items-center mt-5 "
           >
-            <p className="w-full text-center text-black text-xl font-bold">
+            <p className="p-1 rounded-md text-center text-white text-lg font-bold bg-[#F98620]">
               {anime.name}
             </p>
           </div>
 
           <img
             id="image-anime"
-            className="absolute bottom-0 w-full h-[17rem]"
+            className="h-auto w-auto"
             src={`https://animex-backend.onrender.com/imgsAnime/${anime.poster}`}
             alt={`Poster ${anime.name}`}
+            title={`Poster ${anime.poster}`}
           />
 
           <div
             id="button-options"
-            className="absolute top-0 right-3  text-black cursor-pointer"
+            className="absolute top-0 right-0 pl-1 pr-1 bg-[#F98620] rounded-full text-slate-white cursor-pointer justify-center items-center hover:animate-spin"
             onClick={() => {
               saveIdTemp(anime._id);
             }}
           >
-            <i className="bi bi-hurricane text-2xl"></i>
+            <i className="bi bi-gear-fill text-lg before:"></i>
           </div>
 
           <div
             id="options"
-            className={`absolute top-8 right-3 bg-black flex flex-col justify-center items-center p-1 rounded-full shadow-lg shadow-black/70 animate__animated ${
+            className={`absolute z-20 top-8 right-1 bg-[#F98620] flex flex-col justify-center items-center p-1 rounded-full shadow-lg shadow-black/70 animate__animated ${
               idTemp == anime._id
                 ? "animate__bounceIn static"
                 : "animate__bounceOut"

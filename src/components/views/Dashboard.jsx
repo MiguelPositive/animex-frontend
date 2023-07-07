@@ -112,7 +112,7 @@ const Dashboard = () => {
         </div>
 
         <div
-          className={`${showRegister} top-24 w-full h-full  flex justify-center items-start z-20`}
+          className={`${showRegister} top-14  w-full h-full  flex justify-center items-start z-20 `}
         >
           <RegisterAnime />
         </div>

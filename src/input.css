@@ -34,6 +34,15 @@ body {
   animation-duration: 500ms;
 }
 
+.animation-miniature {
+  animation-name: animation-miniature;
+  animation-fill-mode: forwards;
+  animation-duration: 500ms;
+  animation-iteration-count: infinite;
+  animation-direction: alternate;
+  
+}
+
 @keyframes login-empy {
   from {
     height: 18rem;
@@ -83,5 +92,15 @@ body {
   to {
     opacity: 1;
     filter: blur(0px);
+  }
+}
+
+@keyframes animation-miniature {
+  from {
+    transform: scale(1);
+  }
+
+  to {
+    transform: scale(1.1);
   }
 }

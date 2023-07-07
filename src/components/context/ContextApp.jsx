@@ -185,20 +185,13 @@ const ContextApp = ({ children }) => {
   };
 
   const addAnime = async (formData, reset) => {
-
-   
     try {
-      await axios.post(
-        "http://localhost:4000/add-anime",
-        formData,
-      );
-
+      await axios.post("https://animex-backend.onrender.com/add-anime", formData);
 
       animeRegistered();
       getAnimes();
       setShowRegisterAnime(false);
       reset();
-      
     } catch (error) {
       console.log(
         `ocurrio un error en el backend al intentar añadir un anime. ${error}`

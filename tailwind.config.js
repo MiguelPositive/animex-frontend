@@ -11,6 +11,8 @@ export default {
         "hands-up": "url(../src/imgs/hands-up.png)",
         loader: "url(../src/imgs/loader.png)",
         dance: "url(https://media.tenor.com/UkK1G2I0EisAAAAi/ast-anime.gif)",
+        trying:
+          "url(https://i.pinimg.com/550x/03/d2/bc/03d2bc56b38b513d3514b46947cf20d5.jpg)",
       },
 
       boxShadow: {
@@ -30,7 +32,9 @@ export default {
 
       screens: {
         "400px": "400px",
+        "510px": "510px",
         "450px": "450px",
+        "775px": "775px",
       },
     },
   },
