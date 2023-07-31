@@ -44,11 +44,12 @@ function useValidateCredentials() {
         let temp = await correctCredentiasl(user, password);
 
         if (temp === true && outside === true) {
+          navigate("/dashboard");
           cookies.set("cookiesUser", user, { path: "/" });
           cookies.set("logged", true, { path: "/" });
           await getIdUser(user);
           setLoaderDashboard(false);
-          navigate("/dashboard");
+          
         } else {
           errorCredentials();
           setLoaderDashboard(false);

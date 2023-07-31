@@ -63,6 +63,7 @@ const Dashboard = () => {
   }, [editMode]);
 
   useEffect(() => {
+    getAnimes();
     setOutside(false);
   }, []);
 
